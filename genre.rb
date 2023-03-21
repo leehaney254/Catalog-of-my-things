@@ -1,12 +1,12 @@
 class Genre
- def initialize(name)
-  @id = Random.rand(1..1000)
-  @name = name
-  @items = []
- end
+  def initialize(name)
+    @id = Random.rand(1..1000)
+    @name = name
+    @items = []
+  end
 
- def add_item(item)
-  @items << item
-  #item.set_genre(self)
- end
+  def add_item(item)
+    @items << item
+    item.genre = self
+  end
 end
