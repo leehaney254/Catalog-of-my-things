@@ -1,6 +1,5 @@
 class Item
   attr_accessor :genre, :author, :source, :label
-  attr_writer :id, :archived
 
   def initialize(publish_date, archived)
     @publish_date = publish_date
@@ -19,4 +18,7 @@ class Item
 
     false
   end
+
+
+  attr_reader :id, :archived
 end
