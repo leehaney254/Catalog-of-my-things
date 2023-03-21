@@ -12,16 +12,18 @@ class Game < Item
   end
 
   def play(date = nil)
-    if date == nil
-      @last_played_at = Time.now
-    else
-      @last_played_at = date
-    end
+    @last_played_at = if date.nil?
+                        Time.now
+                      else
+                        date
+                      end
   end
 
   private
+
   def can_be_archived?
-    return true if super && Time.now - @last_played_at > 63072000
+    return true if super && Time.now - @last_played_at > 63_072_000
+
     false
   end
 end
