@@ -1,13 +1,17 @@
-require 'item.rb'
+require './item'
 
 class MusicAlbum < Item
-  def initialize(on_spotify: false)
-    super()
+  attr_accessor :on_spotify
+
+  def initialize(publish_date, archived, on_spotify: false)
+    super(publish_date, archived)
     @on_spotify = on_spotify
   end
 
+  private
+
   def can_be_archived?
-    true if super && @on_spotify 
+    true if super && @on_spotify
 
     false
   end
