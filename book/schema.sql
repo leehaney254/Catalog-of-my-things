@@ -16,3 +16,6 @@ CREATE TABLE labels (
   title VARCHAR(100),
   color VARCHAR(100)
 );
+
+-- Index
+CREATE INDEX idx_books_labels ON books(label_id);
