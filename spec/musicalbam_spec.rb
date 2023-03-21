@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(15, true ,on_spotify: true)
+    @music_album = MusicAlbum.new(15, true, on_spotify: true)
   end
 
   context 'When creatinga music album' do
