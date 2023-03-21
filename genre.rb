@@ -7,6 +7,6 @@ class Genre
 
  def add_item(item)
   @items << item
-  item.set_genre(self)
+  #item.set_genre(self)
  end
 end
