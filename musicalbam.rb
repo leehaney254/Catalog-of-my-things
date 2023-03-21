@@ -2,6 +2,7 @@ require 'item.rb'
 
 class MusicAlbum < Item
   def initialize(on_spotify: false)
+    super()
     @on_spotify = on_spotify
   end
 
@@ -9,4 +10,5 @@ class MusicAlbum < Item
     true if super && @on_spotify 
 
     false
+  end
 end
