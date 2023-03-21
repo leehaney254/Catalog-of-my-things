@@ -4,7 +4,7 @@ class Item
   def initialize(publish_date, archived)
     @publish_date = publish_date
     @archived = archived
-    @id = rand(1000)
+    @id = Random.rand(1..1000)
   end
 
   def move_to_archive
