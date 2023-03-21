@@ -11,8 +11,7 @@ def main
       puts 'List all books'
       puts
     when 2
-      puts 'List all music albums'
-      puts
+      app.list_music_album
     when 3
       puts 'List all movies'
       puts
