@@ -10,7 +10,7 @@ describe Genre do
       expect(@genre).to be_an_instance_of Genre
     end
 
-    it 'Should return the name action' do 
+    it 'Should return the name action' do
       expect(@genre.name).to eq 'Action'
     end
 
