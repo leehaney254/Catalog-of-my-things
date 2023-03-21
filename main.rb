@@ -1,6 +1,7 @@
 require './app'
 
 def main
+  app = App.new
   puts 'This a catalog of my things'
   puts
 
@@ -34,8 +35,7 @@ def main
       puts 'Add a book'
       puts
     when 10
-      puts 'Add a music album'
-      puts
+      app.add_music_album
     when 11
       puts 'Add a movie'
       puts
@@ -73,5 +73,6 @@ def menu
   end
   gets.chomp.to_i
 end
+
 
 main
