@@ -20,6 +20,5 @@ class Item
     false
   end
 
-
   attr_reader :id, :archived
 end

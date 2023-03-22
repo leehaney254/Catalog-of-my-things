@@ -75,5 +75,4 @@ def menu
   gets.chomp.to_i
 end
 
-
 main
