@@ -1,10 +1,10 @@
 require './musicalbam'
-require './albummodule'
+require './module/albummodule'
 require './genre'
-require './datamodule'
-require './checkfile'
+require './module/datamodule'
+require './sideClass/checkfile'
 require 'json'
-require './readfile'
+require './sideClass/readfile'
 
 class App
   include AlbumModule

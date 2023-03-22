@@ -2,7 +2,7 @@ module AlbumModule
   def add_music_album
     print 'What day was it published(ie 10): '
     date = gets.chomp.to_i
-    print 'Is it archived true or true or false: '
+    print 'Is it archived true or false: '
     archived = gets.chomp
     print 'Is it on spotify true or false: '
     on_spotify = gets.chomp

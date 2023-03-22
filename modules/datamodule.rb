@@ -24,7 +24,7 @@ module DataModule
       }
       new_array << hash_genre
     end
-    saved_data(new_array, 'genre.json')
+    saved_data(new_array, './storage_files/genre.json')
   end
 
   def music_album_hash
@@ -37,13 +37,13 @@ module DataModule
       }
       new_array << hash_music_album
     end
-    saved_data(new_array, 'musicAlbam.json')
+    saved_data(new_array, './storage_files/musicAlbam.json')
   end
 
   def read_genre
     new_array = []
     people_data = ReadData.new
-    json_genre = people_data.read_data('genre.json')
+    json_genre = people_data.read_data('./storage_files/genre.json')
     json_genre.each do |item|
       new_array << Genre.new(item['name'])
     end
@@ -53,7 +53,7 @@ module DataModule
   def read_music_album
     new_array = []
     people_data = ReadData.new
-    json_music = people_data.read_data('musicAlbam.json')
+    json_music = people_data.read_data('./storage_files/musicAlbam.json')
     json_music.each do |item|
       new_array << MusicAlbum.new(item['publish_date'], archived: item['archive'], on_spotify: item['on_spotify'])
     end
