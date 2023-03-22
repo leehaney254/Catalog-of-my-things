@@ -19,5 +19,5 @@ class Item
     false
   end
 
-  attr_wrtiter :id, :archived
+  attr_writer :id, :archived
 end
