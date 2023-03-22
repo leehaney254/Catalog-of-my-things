@@ -19,7 +19,7 @@ def main
       puts 'List of games'
       puts
     when 5
-      puts 'List all genres (e.g \'Comedy\', \'Thriller\')'
+      app.list_genre
       puts
     when 6
       puts 'List all labels (e.g. \'Gift\', \'New\')'
