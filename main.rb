@@ -1,13 +1,14 @@
 require './app'
 
 def main
+  app = App.new
   puts 'This a catalog of my things'
   puts
 
   loop do
     case menu
     when 1
-      puts 'List all books'
+      app.list_books
       puts
     when 2
       puts 'List all music albums'
@@ -22,7 +23,7 @@ def main
       puts 'List all genres (e.g \'Comedy\', \'Thriller\')'
       puts
     when 6
-      puts 'List all labels (e.g. \'Gift\', \'New\')'
+      app.list_labels
       puts
     when 7
       puts 'List all authors (e.g. \'Stephen King\')'
@@ -31,7 +32,7 @@ def main
       puts 'List all sources (e.g. \'From a friend\', \'Online shop\')'
       puts
     when 9
-      puts 'Add a book'
+      app.add_book
       puts
     when 10
       puts 'Add a music album'
