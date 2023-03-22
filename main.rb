@@ -1,8 +1,6 @@
 require './app'
 
-def main
-  app = App.new
-  app.fetch_data
+def main(app)
   puts 'This a catalog of my things'
   puts
 
@@ -18,7 +16,7 @@ def main
       puts
     when 4
       puts 'List of games'
-      puts
+      app.list_games
     when 5
       app.list_genre
       puts
@@ -27,13 +25,12 @@ def main
       puts
     when 7
       puts 'List all authors (e.g. \'Stephen King\')'
-      puts
+      app.list_authors
     when 8
       puts 'List all sources (e.g. \'From a friend\', \'Online shop\')'
       puts
     when 9
       puts 'Add a book'
-      puts
     when 10
       app.add_music_album
     when 11
@@ -41,9 +38,9 @@ def main
       puts
     when 12
       puts 'Add a game'
-      puts
+      app.create_game
     when 13
-      app.exit_app
+      app.save_to_files
       puts 'Thank you for using this App👋❌'
       exit
     else
@@ -75,4 +72,5 @@ def menu
   gets.chomp.to_i
 end
 
-main
+app = App.new
+main(app)

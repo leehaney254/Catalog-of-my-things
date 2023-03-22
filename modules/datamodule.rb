@@ -18,7 +18,7 @@ module DataModule
 
   def genre_hash
     new_array = []
-    @genre.each do |item|
+    @genres.each do |item|
       hash_genre = {
         'name' => item.name
       }
@@ -29,7 +29,7 @@ module DataModule
 
   def music_album_hash
     new_array = []
-    @music_album.each do |item|
+    @music_albums.each do |item|
       hash_music_album = {
         'publish_date' => item.publish_date,
         'archive' => item.move_to_archive,
@@ -40,23 +40,40 @@ module DataModule
     saved_data(new_array, './storage_files/musicAlbam.json')
   end
 
-  def read_genre
+  def read_genres
     new_array = []
     people_data = ReadData.new
     json_genre = people_data.read_data('./storage_files/genre.json')
     json_genre.each do |item|
       new_array << Genre.new(item['name'])
     end
-    @genre = new_array
+    new_array
   end
 
-  def read_music_album
+  def read_music_albums
     new_array = []
     people_data = ReadData.new
     json_music = people_data.read_data('./storage_files/musicAlbam.json')
     json_music.each do |item|
       new_array << MusicAlbum.new(item['publish_date'], archived: item['archive'], on_spotify: item['on_spotify'])
     end
-    @music_album = new_array
+   new_array
+  end
+
+  def read_games
+    games_raw = JSON.parse(File.read('storage_files/games.json'))
+    puts games_raw
+    games = games_raw.map do |game|
+      Game.new(game['name'], game['publish_date'], game['archived'], game['multiplayer'])
+    end
+   puts games
+  end
+
+  def read_authors
+    authors_raw = JSON.parse(File.read('storage_files/authors.json'))
+    authors = authors_raw.map do |author|
+      Author.new(author['first_name'], author['last_name'])
+    end
+    authors
   end
 end
