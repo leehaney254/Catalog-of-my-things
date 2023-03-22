@@ -2,8 +2,6 @@ require './book/book'
 require './book/label'
 require './modules/book_module'
 require './modules/data_module'
-require 'json'
-
 require './musicalbam'
 require './modules/albummodule'
 require './genre'
@@ -17,12 +15,16 @@ require './sideClass/readfile'
 class App
   include AlbumModule
   include DataModule
+  include BookModule
+  include DataModule
   def initialize
     check_files
     @games = read_games
     @authors = read_authors
     @music_albums = read_music_albums
     @genres = read_genres
+    @books = read_books
+    @labels = read_labels
   end
 
   def create_game
