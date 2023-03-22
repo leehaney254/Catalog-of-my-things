@@ -6,17 +6,28 @@ module AlbumModule
     archived = gets.chomp
     print 'Is it on spotify true or false: '
     on_spotify = gets.chomp
+    print 'Enter the album genre(e.g \'Comedy\', \'Thriller\'): '
+    genre = gets.chomp
+    music_album = MusicAlbum.new(date, archived: archived, on_spotify: on_spotify)
+    genre_album = Genre.new(genre)
+    @music_album << music_album
+    @genre << genre_album
     puts 'Album Created succesfully.'
     puts
-    music_album = MusicAlbum.new(date, archived: archived, on_spotify: on_spotify)
-    @music_album << music_album
   end
 
   def list_music_album
+    puts 'There are no album to list' if @music_album.empty?
     @music_album.each_with_index do |album, index|
       puts "#{index}. Publish_date: #{album.publish_date} on_spotify: #{album.on_spotify}"
     end
     puts
   end
-  
+
+  def list_genre
+    puts 'There are no genres to list' if @genre.empty?
+    @genre.each_with_index do |one_genre, index|
+      puts "#{index}. #{one_genre.name}"
+    end
+  end
 end
