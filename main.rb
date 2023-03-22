@@ -2,6 +2,7 @@ require './app'
 
 def main
   app = App.new
+  app.fetch_data
   puts 'This a catalog of my things'
   puts
 
