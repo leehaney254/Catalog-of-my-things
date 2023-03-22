@@ -1,6 +1,6 @@
 module DataModule
   def check_files
-    files = ['games', 'authors']
+    files = %w[games authors]
     files.each do |file|
       unless File.exist?("./storage_files/#{file}.json")
         File.new("./storage_files/#{file}.json", 'w')
@@ -11,8 +11,8 @@ module DataModule
 
   def save_to_files
     hashes = [games_hash, authors_hash]
-    files = ['games', 'authors']
-    hashes.each_with_index do |hash,index|
+    files = %w[games authors]
+    hashes.each_with_index do |hash, index|
       File.write("./storage_files/#{files[index]}.json", hash.to_json)
     end
     # File.write('storage_files/games.json', games.to_json)
@@ -61,7 +61,7 @@ module DataModule
   end
 
   def games_hash
-    hashed_games = @games.map do |game|
+    @games.map do |game|
       {
         name: game.name,
         publish_date: game.publish_date,
@@ -69,17 +69,15 @@ module DataModule
         multiplayer: game.multiplayer
       }
     end
-    hashed_games
   end
 
   def authors_hash
-    hashed_authors = @authors.map do |author|
+    @authors.map do |author|
       {
         first_name: author.first_name,
         last_name: author.last_name
       }
     end
-    hashed_authors
   end
 
   # READ DATA FROM FILES
@@ -102,22 +100,20 @@ module DataModule
     json_music.each do |item|
       new_array << MusicAlbum.new(item['publish_date'], archived: item['archive'], on_spotify: item['on_spotify'])
     end
-   new_array
+    new_array
   end
 
   def read_games
     games_raw = JSON.parse(File.read('storage_files/games.json'))
-    games_array = games_raw.map do |game|
+    games_raw.map do |game|
       Game.new(game['name'], game['publish_date'], game['archived'], game['multiplayer'])
     end
-    games_array
   end
 
   def read_authors
     authors_raw = JSON.parse(File.read('storage_files/authors.json'))
-    authors_array = authors_raw.map do |author|
+    authors_raw.map do |author|
       Author.new(author['first_name'], author['last_name'])
     end
-    authors_array
   end
 end

@@ -7,7 +7,6 @@ require_relative 'game'
 require_relative 'author'
 require 'json'
 require './sideClass/readfile'
-require './modules/hash_data'
 
 
 
