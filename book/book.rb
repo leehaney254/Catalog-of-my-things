@@ -6,7 +6,7 @@ class Book < Item
   attr_reader :publisher, :publish_date, :archived, :cover_state
 
   def initialize(publisher, publish_date, archived, cover_state)
-    super(publish_date)
+    super(publish_date, id)
     @id = SecureRandom.uuid
     @publisher = publisher
     @publish_date = publish_date
