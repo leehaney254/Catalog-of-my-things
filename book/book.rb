@@ -1,12 +1,16 @@
 require_relative '../item'
 require 'date'
+require 'securerandom'
 
 class Book < Item
-  attr_reader :publisher, :cover_state
+  attr_reader :publisher, :publish_date, :archived, :cover_state
 
-  def initialize(publisher, cover_state, publish_date, id)
-    super(publish_date, id)
+  def initialize(publisher, publish_date, archived, cover_state)
+    super(publish_date)
+    @id = SecureRandom.uuid
     @publisher = publisher
+    @publish_date = publish_date
+    @archived = archived
     @cover_state = cover_state
   end
 
