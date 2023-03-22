@@ -8,8 +8,6 @@ require_relative 'author'
 require 'json'
 require './sideClass/readfile'
 
-
-
 class App
   include AlbumModule
   include DataModule
