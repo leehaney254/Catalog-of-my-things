@@ -8,20 +8,18 @@ require_relative 'author'
 require 'json'
 require './sideClass/readfile'
 require './modules/hash_data'
-    
+
 
 
 class App
   include AlbumModule
   include DataModule
-  include FileManagement
   def initialize
     check_files
-    load_from_files
-    @games = []
-    @authors = []
-    @music_albums = []
-    @genres = []
+    @games = read_games
+    @authors = read_authors
+    @music_albums = read_music_albums
+    @genres = read_genres
   end
 
   def create_game
@@ -56,13 +54,5 @@ class App
     @authors.each do |author|
       puts "First name: #{author.first_name} - Last name: #{author.last_name}"
     end
-  end
-
-  def load_from_files
-    @genres = read_genres
-    @music_albums = read_music_albums
-    @authors = read_authors
-    @games = read_games
-    puts @games[0]
   end
 end
