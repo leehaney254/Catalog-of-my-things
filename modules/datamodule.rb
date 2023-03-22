@@ -1,4 +1,24 @@
 module DataModule
+  def check_files
+    files = ['games', 'authors']
+    files.each do |file|
+      unless File.exist?("./storage_files/#{file}.json")
+        File.new("./storage_files/#{file}.json", 'w')
+        File.write("./storage_files/#{file}.json", [])
+      end
+    end
+  end
+
+  def save_to_files
+    hashes = [games_hash, authors_hash]
+    files = ['games', 'authors']
+    hashes.each_with_index do |hash,index|
+      File.write("./storage_files/#{files[index]}.json", hash.to_json)
+    end
+    # File.write('storage_files/games.json', games.to_json)
+    # File.write('storage_files/authors.json', authors.to_json)
+  end
+
   def read_data(file)
     return [] unless File.exist?(file)
 
@@ -40,6 +60,31 @@ module DataModule
     saved_data(new_array, './storage_files/musicAlbam.json')
   end
 
+  def games_hash
+    hashed_games = @games.map do |game|
+      {
+        name: game.name,
+        publish_date: game.publish_date,
+        archived: game.archived,
+        multiplayer: game.multiplayer
+      }
+    end
+    hashed_games
+  end
+
+  def authors_hash
+    hashed_authors = @authors.map do |author|
+      {
+        first_name: author.first_name,
+        last_name: author.last_name
+      }
+    end
+    hashed_authors
+  end
+
+  # READ DATA FROM FILES
+  # Methods called directly in app
+
   def read_genres
     new_array = []
     people_data = ReadData.new
@@ -62,18 +107,17 @@ module DataModule
 
   def read_games
     games_raw = JSON.parse(File.read('storage_files/games.json'))
-    puts games_raw
-    games = games_raw.map do |game|
+    games_array = games_raw.map do |game|
       Game.new(game['name'], game['publish_date'], game['archived'], game['multiplayer'])
     end
-   puts games
+    games_array
   end
 
   def read_authors
     authors_raw = JSON.parse(File.read('storage_files/authors.json'))
-    authors = authors_raw.map do |author|
+    authors_array = authors_raw.map do |author|
       Author.new(author['first_name'], author['last_name'])
     end
-    authors
+    authors_array
   end
 end
