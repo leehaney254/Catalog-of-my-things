@@ -1,9 +1,11 @@
+require 'securerandom'
+
 class Label
   attr_accessor :title, :color
   attr_reader :items, :id
 
-  def initialize(id, title, color)
-    @id = id
+  def initialize(title, color)
+    @id = SecureRandom.uuid
     @title = title
     @color = color
     @items = []
