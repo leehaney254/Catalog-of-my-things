@@ -42,6 +42,7 @@ def main
       puts 'Add a game'
       puts
     when 13
+      app.exit_app
       puts 'Thank you for using this App👋❌'
       exit
     else
