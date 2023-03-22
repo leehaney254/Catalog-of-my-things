@@ -1,7 +1,6 @@
 require './app'
 
-def main
-  app = App.new
+def main(app)
   puts 'This a catalog of my things'
   puts
 
@@ -11,23 +10,22 @@ def main
       app.list_books
       puts
     when 2
-      puts 'List all music albums'
-      puts
+      app.list_music_album
     when 3
       puts 'List all movies'
       puts
     when 4
       puts 'List of games'
-      puts
+      app.list_games
     when 5
-      puts 'List all genres (e.g \'Comedy\', \'Thriller\')'
+      app.list_genre
       puts
     when 6
       app.list_labels
       puts
     when 7
       puts 'List all authors (e.g. \'Stephen King\')'
-      puts
+      app.list_authors
     when 8
       puts 'List all sources (e.g. \'From a friend\', \'Online shop\')'
       puts
@@ -35,15 +33,15 @@ def main
       app.add_book
       puts
     when 10
-      puts 'Add a music album'
-      puts
+      app.add_music_album
     when 11
       puts 'Add a movie'
       puts
     when 12
       puts 'Add a game'
-      puts
+      app.create_game
     when 13
+      app.save_to_files
       puts 'Thank you for using this App👋❌'
       exit
     else
@@ -75,4 +73,5 @@ def menu
   gets.chomp.to_i
 end
 
-main
+app = App.new
+main(app)
