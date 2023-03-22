@@ -10,8 +10,7 @@ def main(app)
       puts 'List all books'
       puts
     when 2
-      puts 'List all music albums'
-      puts
+      app.list_music_album
     when 3
       puts 'List all movies'
       puts
@@ -19,7 +18,7 @@ def main(app)
       puts 'List of games'
       app.list_games
     when 5
-      puts 'List all genres (e.g \'Comedy\', \'Thriller\')'
+      app.list_genre
       puts
     when 6
       puts 'List all labels (e.g. \'Gift\', \'New\')'
@@ -33,8 +32,7 @@ def main(app)
     when 9
       puts 'Add a book'
     when 10
-      puts 'Add a music album'
-      puts
+      app.add_music_album
     when 11
       puts 'Add a movie'
       puts

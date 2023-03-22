@@ -1,3 +1,15 @@
+CREATE TABLE genre (
+  id INTEGER,
+  name VARCHAR(100)
+);
+
+CREATE TABLE  music_album (
+  id INTEGER,
+  publish_date INTEGER,
+  archived BOOLEAN,
+  on_spotify BOOLEAN
+);
+
 CREATE TABLE IF NOT EXISTS 'games' (
     'id' INTEGER PRIMARY KEY AUTOINCREMENT,
     'name' TEXT NOT NULL,
