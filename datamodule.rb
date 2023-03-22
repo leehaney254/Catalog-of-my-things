@@ -39,4 +39,24 @@ module DataModule
     end
     saved_data(new_array, 'musicAlbam.json')
   end
+
+  def read_genre
+    new_array = []
+    people_data = ReadData.new
+    json_genre = people_data.read_data('genre.json')
+    json_genre.each do |item|
+      new_array << Genre.new(item['name'])
+    end
+    @genre = new_array
+  end
+
+  def read_music_album
+    new_array = []
+    people_data = ReadData.new
+    json_music = people_data.read_data('musicAlbam.json')
+    json_music.each do |item|
+      new_array << MusicAlbum.new(item['publish_date'], archived: item['archive'], on_spotify: item['on_spotify'])
+    end
+    @music_album = new_array
+  end
 end
