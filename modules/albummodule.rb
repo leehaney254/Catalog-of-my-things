@@ -6,7 +6,6 @@ module AlbumModule
     archived = gets.chomp
     print 'Is it on spotify true or false: '
     on_spotify = gets.chomp
-    add_genre
     music_album = MusicAlbum.new(date, archived: archived, on_spotify: on_spotify)
     create_author
     add_label
@@ -21,7 +20,7 @@ module AlbumModule
     genre = gets.chomp
     genre_album = Genre.new(genre)
     @genres << genre_album
-    write_genre
+    # write_genre
   end
 
   def list_music_album
