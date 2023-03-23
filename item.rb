@@ -15,7 +15,7 @@ class Item
   private
 
   def can_be_archived?
-    return true if @publish_date > 10
+    return true if @publish_date.to_i > 10
 
     false
   end

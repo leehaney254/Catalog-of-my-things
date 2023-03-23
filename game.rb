@@ -9,6 +9,7 @@ class Game < Item
     @last_played_at = nil
     @name = name
     @id = rand(1000)
+    @archived = archived
   end
 
   def play(date = nil)
