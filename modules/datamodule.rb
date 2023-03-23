@@ -15,8 +15,6 @@ module DataModule
     hashes.each_with_index do |hash, index|
       File.write("./storage_files/#{files[index]}.json", hash.to_json)
     end
-    # File.write('storage_files/games.json', games.to_json)
-    # File.write('storage_files/authors.json', authors.to_json)
   end
 
   def read_data(file)
@@ -101,6 +99,14 @@ module DataModule
       new_array << MusicAlbum.new(item['publish_date'], archived: item['archive'], on_spotify: item['on_spotify'])
     end
     new_array
+  end
+
+  def write_authors
+    File.write('storage_files/authors.json', authors_hash.to_json)
+  end
+
+  def write_genre
+    File.write('storage_files/genre.json', genre_hash.to_json)
   end
 
   def read_games

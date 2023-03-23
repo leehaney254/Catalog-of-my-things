@@ -8,17 +8,23 @@ module BookModule
     cover_state = gets.chomp
     print 'When was the book published (dd-mm-yyyy)? : '
     publish_date = gets.chomp
+    books = Book.new(publisher, publish_date, archived, cover_state)
+    create_author
+    add_label
+    add_genre
+    @books << books
+    write_books
+    puts 'You have successfully added a book 😎'
+  end
+
+  def add_label
     print 'Enter label title for the book: '
     title = gets.chomp
     print 'Enter the color of the label: '
     color = gets.chomp
-    books = Book.new(publisher, publish_date, archived, cover_state)
     labels = Label.new(title, color)
-    @books << books
     @labels << labels
-    write_books
     write_labels
-    puts 'You have successfully added a book 😎'
   end
 
   def list_books
