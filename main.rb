@@ -11,41 +11,35 @@ def main(app)
       puts
     when 2
       app.list_music_album
-    when 3
-      puts 'List all movies'
       puts
-    when 4
+    when 3
       puts 'List of games'
       app.list_games
-    when 5
+      puts
+    when 4
       app.list_genre
       puts
-    when 6
+    when 5
       app.list_labels
       puts
-    when 7
+    when 6
       puts 'List all authors (e.g. \'Stephen King\')'
       app.list_authors
-    when 8
-      puts 'List all sources (e.g. \'From a friend\', \'Online shop\')'
       puts
-    when 9
+    when 7
       app.add_book
       puts
-    when 10
+    when 8
       app.add_music_album
-    when 11
-      puts 'Add a movie'
-      puts
-    when 12
+    when 9
       puts 'Add a game'
       app.create_game
-    when 13
+    when 10
       app.save_to_files
       puts 'Thank you for using this App👋❌'
       exit
     else
-      puts 'Please select an option between 1 and 13'
+      puts 'Please select an option between 1 and 10'
     end
   end
 end
@@ -55,17 +49,14 @@ def menu
   list = {
     1 => 'List all books',
     2 => 'List all music albums',
-    3 => 'List all movies',
-    4 => 'List of games',
-    5 => 'List all genres (e.g \'Comedy\', \'Thriller\')',
-    6 => 'List all labels (e.g. \'Gift\', \'New\')',
-    7 => 'List all authors (e.g. \'Stephen King\')',
-    8 => 'List all sources (e.g. \'From a friend\', \'Online shop\')',
-    9 => 'Add a book',
-    10 => 'Add a music album',
-    11 => 'Add a movie',
-    12 => 'Add a game',
-    13 => 'Exit App'
+    3 => 'List of games',
+    4 => 'List all genres (e.g \'Comedy\', \'Thriller\')',
+    5 => 'List all labels (e.g. \'Gift\', \'New\')',
+    6 => 'List all authors (e.g. \'Stephen King\')',
+    7 => 'Add a book',
+    8 => 'Add a music album',
+    9 => 'Add a game',
+    10 => 'Exit App'
   }
   list.each do |index, string|
     puts "#{index} - #{string}"

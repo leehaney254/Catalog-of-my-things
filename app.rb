@@ -30,11 +30,11 @@ class App
   def create_game
     puts 'Enter the name of the game'
     name = gets.chomp
-    puts 'Enter the publish date of the game'
+    puts 'Enter the publish date of the game [dd-mm-yyyy]'
     publish_date = gets.chomp
-    puts 'Enter the archived status of the game'
+    puts 'Enter the archived status of the game (true/false)'
     archived = gets.chomp
-    puts 'Enter the multiplayer status of the game'
+    puts 'Enter the multiplayer status of the game (true/false)'
     multiplayer = gets.chomp
     game = Game.new(name, publish_date, archived, multiplayer)
     @games << game
