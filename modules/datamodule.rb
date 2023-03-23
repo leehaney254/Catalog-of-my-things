@@ -10,13 +10,11 @@ module DataModule
   end
 
   def save_to_files
-    hashes = [games_hash, authors_hash]
-    files = %w[games authors]
+    hashes = [games_hash, authors_hash, music_album_hash, genre_hash]
+    files = %w[games authors musicAlbam genre]
     hashes.each_with_index do |hash, index|
       File.write("./storage_files/#{files[index]}.json", hash.to_json)
     end
-    # File.write('storage_files/games.json', games.to_json)
-    # File.write('storage_files/authors.json', authors.to_json)
   end
 
   def read_data(file)
@@ -28,36 +26,22 @@ module DataModule
     JSON.parse(file_data)
   end
 
-  def saved_data(arr, filename)
-    new_file = CheckFile.new
-    json = JSON.generate(arr)
-    store_file = new_file.check_file(filename, 'w')
-    store_file.write(json)
-    store_file.close
+  def music_album_hash
+    @music_albums.map do |item|
+      {
+        publish_date: item.publish_date,
+        archive: item.move_to_archive,
+        on_spotify: item.on_spotify
+      }
+    end
   end
 
   def genre_hash
-    new_array = []
-    @genres.each do |item|
-      hash_genre = {
-        'name' => item.name
+    @genres.map do |item|
+      {
+        name: item.name
       }
-      new_array << hash_genre
     end
-    saved_data(new_array, './storage_files/genre.json')
-  end
-
-  def music_album_hash
-    new_array = []
-    @music_albums.each do |item|
-      hash_music_album = {
-        'publish_date' => item.publish_date,
-        'archive' => item.move_to_archive,
-        'on_spotify' => item.on_spotify
-      }
-      new_array << hash_music_album
-    end
-    saved_data(new_array, './storage_files/musicAlbam.json')
   end
 
   def games_hash
@@ -79,9 +63,6 @@ module DataModule
       }
     end
   end
-
-  # READ DATA FROM FILES
-  # Methods called directly in app
 
   def read_genres
     new_array = []

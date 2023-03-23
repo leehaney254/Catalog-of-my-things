@@ -6,14 +6,21 @@ module AlbumModule
     archived = gets.chomp
     print 'Is it on spotify true or false: '
     on_spotify = gets.chomp
-    print 'Enter the album genre(e.g \'Comedy\', \'Thriller\'): '
-    genre = gets.chomp
     music_album = MusicAlbum.new(date, archived: archived, on_spotify: on_spotify)
-    genre_album = Genre.new(genre)
+    create_author
+    add_label
+    add_genre
     @music_albums << music_album
-    @genres << genre_album
     puts 'Album Created succesfully.'
     puts
+  end
+
+  def add_genre
+    print 'Enter the genre(e.g \'Comedy\', \'Thriller\'): '
+    genre = gets.chomp
+    genre_album = Genre.new(genre)
+    @genres << genre_album
+    # write_genre
   end
 
   def list_music_album

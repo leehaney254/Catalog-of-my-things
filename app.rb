@@ -38,6 +38,9 @@ class App
     multiplayer = gets.chomp
     game = Game.new(name, publish_date, archived, multiplayer)
     @games << game
+    create_author
+    add_label
+    add_genre
   end
 
   def create_author
@@ -47,6 +50,7 @@ class App
     last_name = gets.chomp
     author = Author.new(first_name, last_name)
     @authors << author
+    write_authors
   end
 
   def list_games

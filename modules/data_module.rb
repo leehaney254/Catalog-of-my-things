@@ -68,6 +68,10 @@ module DataModule
     end
   end
 
+  def write_authors
+    File.write('storage_files/authors.json', authors_hash.to_json)
+  end
+
   def write_books
     File.write('storage_files/books.json', books_hash.to_json)
   end
